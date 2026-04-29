@@ -111,3 +111,27 @@ class Snake(GameObject):
                 self.last = self.positions.pop()
             else:
                 self.last = None
+
+    def draw(self, surface):
+        """Отрисовывает змейку на экране."""
+        # Отрисовка тела змейки (кроме головы)
+        for position in self.positions[:-1]:
+            rect = pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
+            pygame.draw.rect(surface, self.body_color, rect)
+            pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
+
+            # Отрисовка головы змейки
+            if self.positions:
+                head_rect = pygame.Rect(
+                    self.positions[0],
+                    (GRID_SIZE, GRID_SIZE)
+                )
+                pygame.draw.rect(surface, self.body_color, head_rect)
+                pygame.draw.rect(surface, BORDER_COLOR, head_rect, 1)
+
+                # Затирание последнего сегмента
+                if self.last:
+                    last_rect = pygame.Rect(self.last, (GRID_SIZE, GRID_SIZE))
+                    pygame.draw.rect(surface, BOARD_BACKGROUND_COLOR, last_rect)
+
+                    
