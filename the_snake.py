@@ -166,4 +166,35 @@ class Snake(GameObject):
                         game_object.next_direction = RIGHT
 
 
-        
+        def main():
+            """Основной цикл."""
+            # Создаем объект игры
+            snake = Snake()
+            apple = Apple()
+
+            while True:
+                clock.tick(SPEED)
+
+                # Обрабатываем ввод пользователья
+                handle_keys(snake)
+
+                # Обновляем направление движения
+                snake.update_direction()
+
+                # Двигаем змейку
+                snake.move()
+
+                # Проверяем, съела ли змейка яблоко
+                if snake.get_head_position() == apple.position:
+                    snake.length += 1
+                    apple.randomize_position()
+
+                    # Отрисовываем объекты
+                    snake.draw(screen)
+                    apple.draw(screen)
+
+                    # Обновляем экран
+                    pygame.display.update()
+
+
+                    
