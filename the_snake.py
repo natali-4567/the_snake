@@ -41,26 +41,18 @@ clock = pygame.time.Clock()
 
 # Тут опишите все классы игры.
 class GameObject:
-    """
-    Базовый класс, от которого наследуются все объекты.
-    Содержит общие атрибуты: позиция и цвет.
-    """
+    """Базовый класс для всех игровых объектов."""
 
     def __init__(self, position=None, body_color=None):
-        """
-        Конструктор базового игрового объекта.
-        Аргументы: position (координаты), body_color (цвет).
-        """
+        """Инициализация базового игрового объекта."""
         if position is None:
-            self.position = (320, 240)
+            self.position = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
         else:
             self.position = position
+        self.body_color = body_color
 
     def draw(self, surface):
-        """
-        Абстрактный метод для отрисовки объекта на экране.
-        Аргумент: surface (поверность, на которой рисуем)
-        """
+        """Абстрактный метод для отрисовки объекта."""
         pass
 
 class Apple(GameObject):
