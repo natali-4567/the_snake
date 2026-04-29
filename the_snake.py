@@ -138,4 +138,15 @@ class Snake(GameObject):
         """Возвращает позицию головы змейки."""
         return self.positins[0]
     
-    
+    def reset(self):
+        """Сбрасывает змейку в начальное состояние"""
+        self.length = 1
+        self.positions = [(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)]
+        self.direction = choice([RIGHT, LEFT, UP, DOWN])
+        self.next_drection = None
+        self.last = None
+        # Очищаем экран
+        screen.fill(BOARD_BACKGROUND_COLOR)
+
+
+        
