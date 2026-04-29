@@ -45,6 +45,7 @@ class GameObject:
         """Абстрактный метод для отрисовки объекта."""
         pass
 
+
 class Apple(GameObject):
     """Класс, описывающий яблоко."""
 
@@ -68,7 +69,6 @@ class Apple(GameObject):
             GRID-SIZE,
             GRID_SIZE
         )
-
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, BORDER_COLOR, rect, 1)
     
@@ -197,4 +197,5 @@ class Snake(GameObject):
                     pygame.display.update()
 
 
-                    
+                    if __name__ == '__main__':
+                        main()
